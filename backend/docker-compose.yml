@@ -9,5 +9,5 @@ services:
     build: "./nginx"
     ports:
       - "80:80"
-   depends_on:
-     - "goservice"
+    depends_on:
+      - "goservice"
