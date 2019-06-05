@@ -8,6 +8,8 @@ services:
   nginx:
     build: "./nginx"
     ports:
-      - "80:80"
+      - "81:80"
+    volumes:
+      - "../static:/var/www"
     depends_on:
       - "goservice"
