@@ -6,6 +6,7 @@ jobs:
     steps:
       - checkout
       # Maybe you need to add some config file specific to circle…
+
       # - run: cp .circleci/.some-parameter-file .some-parameter-file
       - run: docker-compose up -d
       #- run: docker-compose exec php composer install -n --prefer-dist
