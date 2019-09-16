@@ -10,6 +10,6 @@ services:
     ports:
       - "81:80"
     volumes:
-      - "./static:/var/www"
+      - "./frontend/__sapper__/export:/var/www"
     depends_on:
       - "goservice"
