@@ -2,32 +2,54 @@ package db
 
 import (
 	"context"
-	"time"
+	"log"
+
+	"../types"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
 	"go.mongodb.org/mongo-driver/mongo/options"
-	"go.mongodb.org/mongo-driver/mongo/readpref"
 )
 
-func Connect() {
-	ctx, _ := context.WithTimeout(context.Background(), 10*time.Second)
-	client, err := mongo.Connect(ctx, options.Client().ApplyURI("mongodb://localhost:27017"))
+// GetClient returns a MongoDB Client
+func GetClient() *mongo.Client {
+	clientOptions := options.Client().ApplyURI("mongodb://localhost:27017")
+	client, err := mongo.NewClient(clientOptions)
+	if err != nil {
+		log.Fatal(err)
+	}
+	err = client.Connect(context.Background())
+	if err != nil {
+		log.Fatal(err)
+	}
+	return client
+}
 
-	println("1: ", err)
+// ReturnAllTasks return all documents from the collection Tasks
+func ReturnAllTasks(client *mongo.Client, filter bson.M) []*types.Task {
+	var tasks []*types.Task
+	collection := client.Database("quiz").Collection("tasks")
+	cur, err := collection.Find(context.TODO(), filter)
+	if err != nil {
+		log.Fatal("Error on Finding all the documents", err)
+	}
+	for cur.Next(context.TODO()) {
+		var task types.Task
+		err = cur.Decode(&task)
+		if err != nil {
+			log.Fatal("Error on Decoding the document", err)
+		}
+		tasks = append(tasks, &task)
+	}
+	return tasks
+}
 
-	ctx, _ = context.WithTimeout(context.Background(), 2*time.Second)
-	err = client.Ping(ctx, readpref.Primary())
-
-	println("2: ", err)
-
-	collection := client.Database("quiz").Collection("questions")
-
-	println("Collection: ", collection)
-
-	ctx, _ = context.WithTimeout(context.Background(), 5*time.Second)
-	res, err := collection.InsertOne(ctx, bson.M{"name": "pi", "value": 3.14159})
-	id := res.InsertedID
-
-	println("id: ", id)
+// AddNewTask insert a new Task in the Tasks Collection
+func AddNewTask(client *mongo.Client, task types.Task) interface{} {
+	collection := client.Database("quiz").Collection("tasks")
+	insertResult, err := collection.InsertOne(context.TODO(), task)
+	if err != nil {
+		log.Fatalln("Error on inserting new Task", err)
+	}
+	return insertResult.InsertedID
 }
