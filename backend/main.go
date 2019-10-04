@@ -32,11 +32,12 @@ func main() {
 	router.POST("/api/add-task", func(context *gin.Context) {
 		text := context.PostForm("text")
 		missedWord := context.PostForm("missedWord")
+		options := context.PostFormArray("options")
 
 		task := types.Task{
 			Text:       text,
 			MissedWord: missedWord,
-			// Options: []string{"Strange", "Normal", "Immortal", "Strong"}
+			Options:    options,
 		}
 		insertedID := db.AddNewTask(client, task)
 		log.Println(insertedID)
