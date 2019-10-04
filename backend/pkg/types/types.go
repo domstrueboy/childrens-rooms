@@ -4,5 +4,5 @@ package types
 type Task struct {
 	Text       string `json:"text"`
 	MissedWord string `json:"missed-word"`
-	Checked    bool   `json:"checked"`
+	// Options    []string `json:"options"`
 }

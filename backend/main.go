@@ -21,17 +21,34 @@ func main() {
 		log.Println("Connected!")
 	}
 
-	task := types.Task{Text: "Stephen Strange", MissedWord: "Strange", Checked: true}
-	insertedID := db.AddNewTask(client, task)
-	log.Println(insertedID)
+	router := gin.Default()
 
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{
+	router.GET("/api/ping", func(context *gin.Context) {
+		context.JSON(200, gin.H{
 			"message": "pong",
 		})
 	})
-	r.Run() // listen and serve on 0.0.0.0:8080
+
+	router.POST("/api/add-task", func(context *gin.Context) {
+		text := context.PostForm("text")
+		missedWord := context.PostForm("missedWord")
+
+		task := types.Task{
+			Text:       text,
+			MissedWord: missedWord,
+			// Options: []string{"Strange", "Normal", "Immortal", "Strong"}
+		}
+		insertedID := db.AddNewTask(client, task)
+		log.Println(insertedID)
+
+		context.JSON(200, gin.H{
+			"status":     "Task was added",
+			"insertedID": insertedID,
+			"taskData":   task,
+		})
+	})
+
+	router.Run() // listen and serve on 0.0.0.0:8080
 }
 
 // heroes := db.ReturnAllTasks(client, bson.M{})
