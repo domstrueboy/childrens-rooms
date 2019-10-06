@@ -1,6 +1,6 @@
 {
-  "name": "TODO",
-  "description": "TODO",
+  "name": "crbooking-frontend",
+  "description": "frontend for crbooking app",
   "version": "0.0.1",
   "scripts": {
     "dev": "sapper dev",
