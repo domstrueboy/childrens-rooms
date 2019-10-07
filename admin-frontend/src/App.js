@@ -1,16 +1,16 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
-function Home() {
-  return <h2>Home</h2>;
+function Task1() {
+  return <h2>Task 1</h2>;
 }
 
-function About() {
-  return <h2>About</h2>;
+function Task2() {
+  return <h2>Task 2</h2>;
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function Task3() {
+  return <h2>Task 3</h2>;
 }
 
 export default function App() {
@@ -20,13 +20,13 @@ export default function App() {
         <nav>
           <ul>
             <li>
-              <Link to="/">Home</Link>
+              <Link to="/task1">Task 1</Link>
             </li>
             <li>
-              <Link to="/about">About</Link>
+              <Link to="/task2">Task 2</Link>
             </li>
             <li>
-              <Link to="/users">Users</Link>
+              <Link to="/task3">Task 3</Link>
             </li>
           </ul>
         </nav>
@@ -34,14 +34,17 @@ export default function App() {
         {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
         <Switch>
-          <Route path="/about">
-            <About />
+          <Route path="/task1">
+            <Task1 />
           </Route>
-          <Route path="/users">
-            <Users />
+          <Route path="/task2">
+            <Task2 />
+          </Route>
+          <Route path="/task3">
+            <Task3 />
           </Route>
           <Route path="/">
-            <Home />
+            <Task1 />
           </Route>
         </Switch>
       </div>
