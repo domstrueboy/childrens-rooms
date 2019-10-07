@@ -1,4 +1,4 @@
-# childrens-rooms
+# Quizzz
 
 ## Запускаем контейнер
 
