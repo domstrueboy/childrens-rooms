@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Page from "./pages/Page";
+import Task1 from "./pages/Task1";
 
 function Task2() {
   return <h2>Task 2</h2>;
@@ -32,7 +32,7 @@ export default function App() {
             renders the first one that matches the current URL. */}
         <Switch>
           <Route path="/task1">
-            <Page />
+            <Task1 />
           </Route>
           <Route path="/task2">
             <Task2 />
@@ -41,7 +41,7 @@ export default function App() {
             <Task3 />
           </Route>
           <Route path="/">
-            <Page />
+            <Task1 />
           </Route>
         </Switch>
       </div>

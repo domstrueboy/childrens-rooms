@@ -31,7 +31,7 @@ func main() {
 
 	router.POST("/api/add-task", func(context *gin.Context) {
 		text := context.PostForm("text")
-		missedWord := context.PostForm("missedWord")
+		missedWord := context.PostForm("missed-word")
 		options := context.PostFormArray("options")
 
 		task := types.Task{
