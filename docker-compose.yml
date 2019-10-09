@@ -8,7 +8,7 @@ services:
   nginx:
     build: "./backend/nginx"
     ports:
-      - "81:80"
+      - "81:80" 
     volumes:
       - "./frontend/__sapper__/export:/var/www"
     depends_on:
