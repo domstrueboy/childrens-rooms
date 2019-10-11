@@ -1,4 +1,4 @@
-#docker-compose.yaml
+#docker-compose.dev.yaml
 version: "3.2"
 services:
   goservice:
