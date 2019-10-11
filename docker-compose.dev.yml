@@ -1,15 +1,39 @@
 #docker-compose.dev.yaml
 version: "3.2"
 services:
-  goservice:
+  db:
+    build: "./db"
+    ports:
+      - "27017"
+  backend:
     build: "./backend"
     ports:
       - "8080"
+    depends_on:
+      - "db"
+  frontend:
+    build: "./frontend"
+    ports:
+      - "3000"
+    depends_on:
+      - "backend"
+  admin-backend:
+    build: "./admin/backend"
+    ports:
+      - "8080"
+    depends_on:
+      - "db"
+  admin-frontend:
+    build: "./admin/frontend"
+    ports:
+      - "3000"
+    depends_on:
+      - "admin-backend"
   nginx:
-    build: "./backend/nginx"
+    build: "./nginx"
     ports:
       - "81:80" 
     volumes:
       - "./frontend/__sapper__/export:/var/www"
     depends_on:
-      - "goservice"
+      - "frontend"
