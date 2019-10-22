@@ -3,6 +3,8 @@ Production ready boilerplate with live-reloading development
 
 Read [this article](https://medium.com/@kdarutkin/how-to-live-reload-code-for-golang-and-docker-without-third-parties-ee90721ef641) first
 
+Read [this article](https://levelup.gitconnected.com/how-to-live-reload-code-for-golang-and-docker-without-third-parties-ee90721ef641) first
+
 
 ## Using with Docker
 Start production environment
