@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+  admin-db:
+    image: mongo
+  admin-backend:
+    build: "./admin/backend"
+    ports:
+      - "8080"
+    depends_on:
+      - "admin-db"
+  # admin-frontend:
+  #   build: "./admin/frontend"
+  #   ports:
+  #     - "3000"
+  #   depends_on:
+  #     - "admin-backend"
+  nginx:
+    build: "./nginx"
+    ports:
+      - "81:80" 
+    volumes:
+      - "./frontend/__sapper__/export:/var/www"
+    depends_on:
+      - "admin-backend"
