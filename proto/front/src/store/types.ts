@@ -11,8 +11,10 @@ export interface IProfile {
     events: TUid[];
 }
 
+export type TProfiles = Record<TUid, IProfile>;
+
 export interface IState {
-    profile: IProfile;
+    profiles: TProfiles;
 }
 
 export interface IStore {

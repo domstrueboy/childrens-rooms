@@ -6,13 +6,15 @@ Vue.use(Vuex);
 
 const store: IStore = {
   state: {
-    profile: {
-      id: '0000-0000-0000-0000-00000000',
-      title: 'default title',
-      places: [],
-      masters: [],
-      activities: [],
-      events: [],
+    profiles: {
+      '0000-0000-0000-0000-00000000': {
+        id: '0000-0000-0000-0000-00000000',
+        title: 'default title',
+        places: [],
+        masters: [],
+        activities: [],
+        events: [],
+      },
     },
   },
   // mutations: {
