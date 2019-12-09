@@ -1,28 +1,17 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
-import { IStore } from './types';
+import Vuex, { StoreOptions } from 'vuex';
+import { IRootState } from './types';
+import profiles from './modules/profiles/profiles';
 
 Vue.use(Vuex);
 
-const store: IStore = {
+const store: StoreOptions<IRootState> = {
   state: {
-    profiles: {
-      '0000-0000-0000-0000-00000000': {
-        id: '0000-0000-0000-0000-00000000',
-        title: 'default title',
-        places: [],
-        masters: [],
-        activities: [],
-        events: [],
-      },
-    },
+    version: '1.0.0',
   },
-  // mutations: {
-  // },
-  // actions: {
-  // },
-  // modules: {
-  // },
+  modules: {
+    profiles,
+  },
 };
 
-export default new Vuex.Store(store);
+export default new Vuex.Store<IRootState>(store);

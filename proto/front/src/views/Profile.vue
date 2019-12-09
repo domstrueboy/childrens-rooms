@@ -1,7 +1,7 @@
 <template>
   <div class="profile">
-    <h1>{{ profile.title }}</h1>
-    <p>{{ profile.id }}</p>
+    <h1>{{ profile ? profile.title : 'John Doe' }}</h1>
+    <p>{{ profile ? profile.id : '0000-0000-0000-0000-00000000' }}</p>
   </div>
 </template>
 
