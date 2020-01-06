@@ -1,14 +1,24 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import store from '@/store';
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
+    path: '/profile/:id',
     name: 'home',
     component: Home,
+    props: route => ({ profileId: route.params.id }),
+  },
+  {
+    path: '/',
+    redirect: `/profile/${store.state.myId}`,
+  },
+  {
+    path: '/profile',
+    redirect: `/profile/${store.state.myId}`,
   },
   {
     path: '/about',

@@ -5,10 +5,18 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    myID: 'myID',
+    myId: 'myId',
     profiles: {
-      myID: {
+      myId: {
         name: 'My tiny school',
+        flows: ['flow1', 'flow2'],
+        events: ['event1', 'event2'],
+        regularEvents: ['regEvent1', 'regEvent2'],
+        teachers: ['teacher1', 'teacher2'],
+        classes: ['class1', 'class2'],
+      },
+      vasya: {
+        name: 'Vasiliy',
         flows: ['flow1', 'flow2'],
         events: ['event1', 'event2'],
         regularEvents: ['regEvent1', 'regEvent2'],
@@ -32,4 +40,5 @@ export default new Vuex.Store({
   },
   modules: {
   },
+  strict: process.env.NODE_ENV !== 'production',
 });

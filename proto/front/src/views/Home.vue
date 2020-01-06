@@ -1,18 +1,21 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h3>{{ id === myId ? 'It`s your profile' : `Profile: ${profiles[id].name}` }}</h3>
+    <p>{{ profiles[id] }}</p>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue';
+import { mapState } from 'vuex';
 
 export default {
   name: 'home',
-  components: {
-    HelloWorld,
+  props: {
+    profileId: String,
+  },
+  computed: {
+    ...mapState(['myId', 'profiles']),
+    id() { return this.profileId || this.myId; },
   },
 };
 </script>
