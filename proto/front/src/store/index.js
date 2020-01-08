@@ -3,6 +3,29 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
+const socket = new WebSocket('ws://localhost:8081');
+
+socket.onopen = () => {
+  console.log('WebSocket connected');
+};
+
+socket.onclose = (event) => {
+  if (event.wasClean) {
+    console.log('Соединение закрыто чисто');
+  } else {
+    console.log('Обрыв соединения'); // например, "убит" процесс сервера
+  }
+  console.log(`Код: ${event.code} причина: ${event.reason}`);
+};
+
+socket.onmessage = (event) => {
+  console.log(`Получены данные ${event.data}`);
+};
+
+socket.onerror = (error) => {
+  console.log(`Ошибка ${error.message}`);
+};
+
 export default new Vuex.Store({
   state: {
     myId: 'myId',
