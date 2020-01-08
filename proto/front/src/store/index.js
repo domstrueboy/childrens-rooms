@@ -38,14 +38,9 @@ export default new Vuex.Store({
   },
   getters: {
     getProfileId: state => (idOrSlug) => {
-      if ({}.hasOwnProperty.call(state.profiles, idOrSlug)) {
-        const id = idOrSlug;
-        return id;
-      }
+      if ({}.hasOwnProperty.call(state.profiles, idOrSlug)) return idOrSlug;
       const profile = Object.entries(state.profiles).find(el => el[1].slug === idOrSlug);
-      if (profile) {
-        return profile[0];
-      }
+      if (profile) return profile[0];
       return null;
     },
   },
