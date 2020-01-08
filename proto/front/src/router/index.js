@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import Profile from '../views/Profile.vue';
 import store from '@/store';
 
 Vue.use(VueRouter);
@@ -9,7 +9,7 @@ const routes = [
   {
     path: '/profile/:id',
     name: 'profile',
-    component: Home,
+    component: Profile,
     props: route => ({
       profileId:
         store.getters.getProfileId(route.params.id) || store.state.myId,

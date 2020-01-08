@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="profile">
     <h3>{{ profileId === myId ? 'It`s your profile' : `Profile: ${profile.name}` }}</h3>
     <p>{{ profile }}</p>
   </div>
@@ -9,7 +9,7 @@
 import { mapState } from 'vuex';
 
 export default {
-  name: 'home',
+  name: 'profile',
   props: {
     profileId: {
       type: String,
@@ -21,7 +21,7 @@ export default {
     },
   },
   computed: {
-    ...mapState(['myId', 'profiles']),
+    ...mapState(['myId']),
   },
 };
 </script>

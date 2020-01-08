@@ -1,12 +1,28 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <nav id="nav">
+      <router-link
+        v-for="link in links"
+        :to="link.link"
+        :key="link.link"
+        class="link"
+      >
+        {{ link.name }}
+      </router-link>
+    </nav>
     <router-view/>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    links() {
+      return this.$store.getters.getProfilesLinksList;
+    },
+  },
+};
+</script>
 
 <style>
 #app {
@@ -28,5 +44,8 @@
 
 #nav a.router-link-exact-active {
   color: #42b983;
+}
+.link:not(:first-child) {
+  margin-left: 10px;
 }
 </style>

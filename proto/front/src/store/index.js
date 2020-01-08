@@ -8,8 +8,8 @@ export default new Vuex.Store({
     myId: 'myId',
     profiles: {
       myId: {
-        slug: 'domstrueboy',
         name: 'My tiny school',
+        slug: 'domstrueboy',
         flows: ['flow1', 'flow2'],
         events: ['event1', 'event2'],
         regularEvents: ['regEvent1', 'regEvent2'],
@@ -17,8 +17,8 @@ export default new Vuex.Store({
         classes: ['class1', 'class2'],
       },
       vasya: {
-        slug: 'Васямба',
         name: 'Vasiliy',
+        slug: 'Васямба',
         flows: ['flow1', 'flow2'],
         events: ['event1', 'event2'],
         regularEvents: ['regEvent1', 'regEvent2'],
@@ -43,6 +43,14 @@ export default new Vuex.Store({
       if (profile) return profile[0];
       return null;
     },
+    getProfilesList: state => Object.entries(state.profiles),
+    getProfilesIdsList: state => state.profiles.keys(),
+    getProfilesLinksList: state => Object.entries(state.profiles).map(
+      el => ({
+        link: el[1].slug ? el[1].slug : el[0],
+        name: el[1].name,
+      }),
+    ),
   },
   mutations: {
   },
