@@ -8,6 +8,7 @@ export default new Vuex.Store({
     myId: 'myId',
     profiles: {
       myId: {
+        slug: 'domstrueboy',
         name: 'My tiny school',
         flows: ['flow1', 'flow2'],
         events: ['event1', 'event2'],
@@ -16,6 +17,7 @@ export default new Vuex.Store({
         classes: ['class1', 'class2'],
       },
       vasya: {
+        slug: 'Васямба',
         name: 'Vasiliy',
         flows: ['flow1', 'flow2'],
         events: ['event1', 'event2'],
@@ -33,6 +35,21 @@ export default new Vuex.Store({
     regularEvents: {},
     teachers: {},
     classes: {},
+  },
+  getters: {
+    getProfileId: state => (idOrSlug) => {
+      if ({}.hasOwnProperty.call(state.profiles, idOrSlug)) {
+        return idOrSlug;
+      }
+      const id = Object.entries(state.profiles).some((profile) => {
+        if (profile[1].slug === idOrSlug) return profile[0];
+        return null;
+      });
+      if (id) {
+        return id;
+      }
+      return null;
+    },
   },
   mutations: {
   },

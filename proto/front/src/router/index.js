@@ -8,9 +8,12 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/profile/:id',
-    name: 'home',
+    name: 'profile',
     component: Home,
-    props: route => ({ profileId: route.params.id }),
+    props: route => ({
+      profileId: route.params.id,
+      profile: store.state.profiles[route.params.id],
+    }),
   },
   {
     path: '/',
