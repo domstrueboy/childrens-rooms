@@ -11,8 +11,10 @@ const routes = [
     name: 'profile',
     component: Home,
     props: route => ({
-      profileId: route.params.id,
-      profile: store.state.profiles[route.params.id],
+      profileId:
+        store.getters.getProfileId(route.params.id) || store.state.myId,
+      profile:
+        store.state.profiles[store.getters.getProfileId(route.params.id) || store.state.myId],
     }),
   },
   {
