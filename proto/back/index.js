@@ -1,28 +1,29 @@
 const WebSocket = require('ws');
-const MongoClient = require("mongodb").MongoClient;
+const { MongoClient } = require('mongodb');
 
-const url = "mongodb://localhost:27017/";
+const url = 'mongodb://localhost:27017/';
 const mongoClient = new MongoClient(url, { useNewUrlParser: true });
- 
-mongoClient.connect(function(err, client){
-  const db = client.db("sked-db");
-  const collection = db.collection("users");
-  let user = {name: "Tom", age: 23};
-  collection.insertOne(user, function(err, result){
-    if (err){ 
-      return console.log(err);
+
+mongoClient.connect((err, client) => {
+  const db = client.db('sked-db');
+  const collection = db.collection('users');
+  const user = { name: 'Tom', age: 23 };
+  collection.insertOne(user, (error, result) => {
+    if (error) {
+      return console.log(error);
     }
     console.log(result.ops);
     client.close();
+    return 0;
   });
 });
- 
+
 const wss = new WebSocket.Server({ port: 8081 });
- 
-wss.on('connection', function connection(ws) {
-  ws.on('message', function incoming(message) {
+
+wss.on('connection', (ws) => {
+  ws.on('message', (message) => {
     console.log('received: %s', message);
   });
- 
+
   ws.send('something');
 });
