@@ -31,8 +31,9 @@ export default new Vuex.Store({
     myId: 'myId',
     profiles: {
       myId: {
-        name: 'My tiny school',
+        title: 'My tiny school',
         slug: 'domstrueboy',
+        email: 'doms@ya.ru',
         flows: ['flow1', 'flow2'],
         events: ['event1', 'event2'],
         regularEvents: ['regEvent1', 'regEvent2'],
@@ -40,8 +41,9 @@ export default new Vuex.Store({
         classes: ['class1', 'class2'],
       },
       vasya: {
-        name: 'Vasiliy',
+        title: 'Vasiliy',
         slug: 'Васямба',
+        email: 'ogogo@ogo.go',
         flows: ['flow1', 'flow2'],
         events: ['event1', 'event2'],
         regularEvents: ['regEvent1', 'regEvent2'],
@@ -76,6 +78,9 @@ export default new Vuex.Store({
     ),
   },
   mutations: {
+    signup(state, user) {
+      state.profiles.myId = user;
+    },
   },
   actions: {
   },
