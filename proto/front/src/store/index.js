@@ -34,7 +34,7 @@ export default new Vuex.Store({
         title: 'My tiny school',
         slug: 'domstrueboy',
         email: 'doms@ya.ru',
-        flows: ['flow1', 'flow2'],
+        flowIds: ['flow1', 'flow2'],
         events: ['event1', 'event2'],
         regularEvents: ['regEvent1', 'regEvent2'],
         teachers: ['teacher1', 'teacher2'],
@@ -44,7 +44,7 @@ export default new Vuex.Store({
         title: 'Vasiliy',
         slug: 'Васямба',
         email: 'ogogo@ogo.go',
-        flows: ['flow1', 'flow2'],
+        flowIds: ['flow1', 'flow2'],
         events: ['event1', 'event2'],
         regularEvents: ['regEvent1', 'regEvent2'],
         teachers: ['teacher1', 'teacher2'],
@@ -53,7 +53,10 @@ export default new Vuex.Store({
     },
     flows: {
       flow1: {
-        name: '',
+        name: 'Hoho',
+      },
+      flow2: {
+        name: 'Hehe',
       },
     },
     events: {},
@@ -76,6 +79,7 @@ export default new Vuex.Store({
         name: el[1].name,
       }),
     ),
+    getFlowById: state => id => state.flows[id],
   },
   mutations: {
     signup(state, user) {
