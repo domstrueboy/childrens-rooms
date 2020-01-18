@@ -1,7 +1,7 @@
 <template>
   <div class="signup">
-    <h3>Welcome!</h3>
     <form @submit.prevent="submitForm">
+      <h3>Welcome!</h3>
       <input v-model="form.username">
       <input v-model="form.email">
       <input v-model="form.password" type="password">
@@ -37,9 +37,12 @@ export default {
 };
 </script>
 
-<style module>
-  form {
-    display: flex;
-    flex-direction: column;
-  }
+<style>
+.signup {
+  display: flex;
+  background: tomato;
+}
+h3, input, button {
+  display: block;
+}
 </style>

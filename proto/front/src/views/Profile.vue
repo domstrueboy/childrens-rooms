@@ -1,7 +1,8 @@
 <template>
   <div class="profile">
     <h3>{{ profileId === myId ? 'It`s your profile' : `Profile: ${profile.name}` }}</h3>
-    <p>{{ profile }}</p>
+    <p>@{{ profile.slug }}</p>
+    <p>{{ profile.email }}</p>
   </div>
 </template>
 
