@@ -15,12 +15,22 @@ export default {
             desc: 'flow 1 description',
             slug: 'flow1slug',
           },
-          unavailable: {
-            years: [],
-            months: [],
-            monthDays: [],
-            weekDays: [],
-            hours: [],
+          available: {
+            years: [], // 2020
+            months: [], // 0, 1, 2, 3, ..., 11
+            monthDays: [], // 1, 2, 3, ..., 31
+            weekDays: {
+              monday: [
+                {
+                  from: '8:00',
+                  to: '12:00',
+                },
+                {
+                  from: '12:30',
+                  to: '16:30',
+                },
+              ],
+            }, // 0, 1, 2, ..., 6
           },
           connects: {
             events: ['event1', 'event2'],
@@ -49,7 +59,7 @@ export default {
           connects: {
             flows: ['flow1'],
             teachers: ['teacher1'],
-            eventTypes: ['class1'],
+            eventTypes: ['eventType1'],
           },
         },
       },
@@ -64,7 +74,7 @@ export default {
             profile: 'profile1',
             flows: ['flow1'],
             teachers: ['teacher1'],
-            classes: ['class1'],
+            eventTypes: ['eventType2'],
           },
         },
       },
@@ -79,11 +89,14 @@ export default {
           connects: {
             events: ['event7', 'event8'],
             regularEvents: ['regEvent7', 'regEvent8'],
-            classes: ['class4'],
+            eventTypes: ['eventType4'],
           },
         },
       },
-      classes: {},
+      eventTypes: {},
     },
+  },
+  teachers: { // teachers as separate profiles
+
   },
 };
