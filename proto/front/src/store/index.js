@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import initialState from './initialState';
 
 Vue.use(Vuex);
 
@@ -13,7 +14,7 @@ socket.onclose = (event) => {
   if (event.wasClean) {
     console.log('Соединение закрыто чисто');
   } else {
-    console.log('Обрыв соединения'); // например, "убит" процесс сервера
+    console.log('Обрыв соединения');
   }
   console.log(`Код: ${event.code} причина: ${event.reason}`);
 };
@@ -27,43 +28,7 @@ socket.onerror = (error) => {
 };
 
 export default new Vuex.Store({
-  state: {
-    myId: 'myId',
-    profiles: {
-      myId: {
-        title: 'My tiny school',
-        slug: 'domstrueboy',
-        email: 'doms@ya.ru',
-        flowIds: ['flow1', 'flow2'],
-        events: ['event1', 'event2'],
-        regularEvents: ['regEvent1', 'regEvent2'],
-        teachers: ['teacher1', 'teacher2'],
-        classes: ['class1', 'class2'],
-      },
-      vasya: {
-        title: 'Vasiliy',
-        slug: 'Васямба',
-        email: 'ogogo@ogo.go',
-        flowIds: ['flow1', 'flow2'],
-        events: ['event1', 'event2'],
-        regularEvents: ['regEvent1', 'regEvent2'],
-        teachers: ['teacher1', 'teacher2'],
-        classes: ['class1', 'class2'],
-      },
-    },
-    flows: {
-      flow1: {
-        name: 'Hoho',
-      },
-      flow2: {
-        name: 'Hehe',
-      },
-    },
-    events: {},
-    regularEvents: {},
-    teachers: {},
-    classes: {},
-  },
+  state: initialState,
   getters: {
     getProfileId: state => (idOrSlug) => {
       if ({}.hasOwnProperty.call(state.profiles, idOrSlug)) return idOrSlug;

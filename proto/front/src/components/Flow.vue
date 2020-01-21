@@ -1,7 +1,7 @@
 <template>
   <div class="flow">
-    <p>I'm flow {{ id }}</p>
-    <p>{{ flow }}</p>
+    <h3>I'm flow {{ flow.name }}</h3>
+    <div>Nothing to show</div>
   </div>
 </template>
 
@@ -24,3 +24,11 @@ export default {
   },
 };
 </script>
+
+<style>
+.flow {
+  height: 50px;
+  width: 250px;
+  background: tomato;
+}
+</style>

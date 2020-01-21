@@ -4,7 +4,7 @@
     <p>@{{ profile.slug }}</p>
     <p>{{ profile.email }}</p>
     <Flow
-      v-for="id in profile.flowIds"
+      v-for="id in profile.flows"
       :key="id"
       :id="id"
     />
