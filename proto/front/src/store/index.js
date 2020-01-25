@@ -45,6 +45,12 @@ export default new Vuex.Store({
       }),
     ),
     getFlowById: state => id => state.flows[id],
+    getProfileFlowsList: state => profileId => Object.entries(state.profiles[profileId].flows).map(
+      flow => ({
+        id: flow[0],
+        ...flow[1],
+      }),
+    ),
   },
   mutations: {
     signup(state, user) {

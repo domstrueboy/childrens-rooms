@@ -15,37 +15,10 @@ export default {
             desc: 'flow 1 description',
             slug: 'flow1slug',
           },
-          available: {
-            years: [], // 2020
-            months: [], // 0, 1, 2, 3, ..., 11
-            monthDays: [], // 1, 2, 3, ..., 31
-            weekDays: {
-              monday: [
-                {
-                  from: '8:00',
-                  to: '12:00',
-                },
-                {
-                  from: '12:30',
-                  to: '16:30',
-                },
-              ],
-            }, // 0, 1, 2, ..., 6
-          },
+          grid: ['8:00', '8:45', '8:55', '9:40'],
           connects: {
             events: ['event1', 'event2'],
             regularEvents: ['regEvent1', 'regEvent2'],
-          },
-        },
-        flow2: {
-          info: {
-            title: 'flow 2 title',
-            desc: 'flow 2 description',
-            slug: 'flow2slug',
-          },
-          connects: {
-            events: ['event3', 'event4'],
-            regularEvents: ['regEvent3', 'regEvent4'],
           },
         },
       },
@@ -56,6 +29,8 @@ export default {
             desc: 'event 1 description',
             slug: 'event1slug',
           },
+          from: new Date('January 17, 2020 08:00:00'),
+          to: new Date('January 17, 2020 08:45:00'),
           connects: {
             flows: ['flow1'],
             teachers: ['teacher1'],
@@ -70,6 +45,9 @@ export default {
             desc: 'regular event 1 description',
             slug: 'regevent1slug',
           },
+          from: new Date('January 17, 2020 08:55:00'),
+          to: new Date('January 17, 2020 09:40:00'),
+          flags: ['weekdays'],
           connects: {
             profile: 'profile1',
             flows: ['flow1'],

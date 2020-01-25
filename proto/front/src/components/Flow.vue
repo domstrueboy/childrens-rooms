@@ -1,25 +1,17 @@
 <template>
   <div class="flow">
-    <h3>I'm flow {{ flow.name }}</h3>
+    <h3>I'm flow {{ flow.id }}</h3>
     <div>Nothing to show</div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   name: 'flow',
   props: {
-    id: {
-      type: String,
+    flow: {
+      type: Object,
       required: true,
-    },
-  },
-  computed: {
-    ...mapGetters(['getFlowById']),
-    flow() {
-      return this.getFlowById(this.id);
     },
   },
 };

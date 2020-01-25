@@ -4,15 +4,15 @@
     <p>@{{ profile.slug }}</p>
     <p>{{ profile.email }}</p>
     <Flow
-      v-for="id in profile.flows"
-      :key="id"
-      :id="id"
+      v-for="flow in flows"
+      :key="flow.id"
+      :flow="flow"
     />
   </div>
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import Flow from '../components/Flow.vue';
 
 export default {
@@ -32,6 +32,10 @@ export default {
   },
   computed: {
     ...mapState(['myId']),
+    ...mapGetters(['getProfileFlowsList']),
+    flows() {
+      return this.getProfileFlowsList(this.profileId);
+    },
   },
 };
 </script>
