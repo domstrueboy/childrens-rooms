@@ -21,6 +21,18 @@ export default {
             regularEvents: ['regEvent1', 'regEvent2'],
           },
         },
+        flow2: {
+          info: {
+            title: 'flow 2 title',
+            desc: 'flow 2 description',
+            slug: 'flow2slug',
+          },
+          grid: ['8:00', '8:45', '8:55', '9:40'],
+          connects: {
+            events: ['event1', 'event2'],
+            regularEvents: ['regEvent1', 'regEvent2'],
+          },
+        },
       },
       events: {
         event1: {
